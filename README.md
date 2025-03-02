@@ -1,0 +1,1 @@
+Stephen J Gaughran, Rachel Gray, Alexander Ochoa, Menna Jones, Nicole Fusco, Joshua M Miller, Nikos Poulakakis, Kevin de Queiroz, Adalgisa Caccone, & Evelyn L Jensen (2025). Whole-genome sequencing confirms multiple species of Galapagos giant tortoises. Evolution, 79 (2), 296–308, https://doi-org.ezproxy.lib.uconn.edu/10.1093/evolut/qpae164
