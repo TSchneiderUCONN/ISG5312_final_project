@@ -1,0 +1,30 @@
+#!/bin/bash
+#SBATCH --job-name=multiqc
+#SBATCH -n 1
+#SBATCH -N 1
+#SBATCH -c 2
+#SBATCH --mem=10G
+#SBATCH --partition=general
+#SBATCH --qos=general
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=
+#SBATCH -o %x_%j.out
+#SBATCH -e %x_%j.err
+
+hostname
+date
+
+#######################################
+#Aggregate FastQC reports using MultiQC
+#######################################
+
+#Load module
+module load MultiQC/1.15
+
+#Specify input and output directories
+INDIR=../../results/02_qc/fastqc_reports/
+OUTDIR=../../results/02_qc/multiqc
+	mkdir -p ${OUTDIR}
+
+#Run MultiQC on FastQC output files
+multiqc -f -o ${OUTDIR} ${INDIR}

@@ -1,0 +1,33 @@
+#!/bin/bash
+#SBATCH --job-name=ISG5312_fastqc
+#SBATCH -n 1
+#SBATCH -N 1
+#SBATCH -c 5
+#SBATCH --mem=20G
+#SBATCH --qos=general
+#SBATCH --partition=general
+#SBATCH --mail-user=
+#SBATCH --mail-type=ALL
+#SBATCH -o %x_%j.out
+#SBATCH -e %x_%j.err
+#SBATCH --array=[1-78]%10
+
+hostname
+date
+
+################################
+#Run FastQC on raw Illumina reads
+################################
+
+#Load software modules
+module load fastqc/0.11.7
+module load MultiQC/1.9
+
+#Set input and output directories
+OUTDIR=../../results/02_qc/fastqc_reports
+	mkdir -p ${OUTDIR}
+INDIR=../../data/fastq/*.fastq
+
+#Run fastqc on Illumina fastq files
+fastqc -t 5 -o ${OUTDIR} ${INDIR}
+
