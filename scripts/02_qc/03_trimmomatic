@@ -1,0 +1,48 @@
+#!/bin/bash
+#SBATCH --job-name=trimmomatic_ISG5312
+#SBATCH -n 1
+#SBATCH -N 1
+#SBATCH -c 10
+#SBATCH --mem=
+#SBATCH --partition=
+#SBATCH --qos=
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=
+#SBATCH -o %x_%j.out
+#SBATCH -e %x_%j.err
+#SBATCH --array=[0-41]
+
+hostname
+date
+
+###################################
+#Run Trimmomatic on raw fastq files
+###################################
+
+#Load software
+module load Trimmomatic/0.39
+
+#Set directories
+INDIR=../../data/fastq
+TRIMDIR=../../results/02_qc/trimmed_fastq
+	mkdir -p $TRIMDIR
+
+#Identify adapters to trim out
+ADAPT=/isg/shared/apps/Trimmomatic/0.39/adapters/TruSeq3-PE-2.fa
+
+#Sample array
+SAMPLELIST=(SRR15734410,SRR15734411,SRR15734412,SRR15734413,SRR15734414,SRR15734415,SRR15734416,SRR15734417,SRR15734418,SRR15734419,SRR15734420,SRR15734421,SRR15734422,SRR15734423,SRR15734424,SRR15734425,SRR15734426,SRR15734427,SRR15734428,SRR15734429,SRR15734430,SRR15734431,SRR15734432,SRR15734433,SRR15734434,SRR15734435,SRR15734436,SRR15734437,SRR15734438,SRR15734439,SRR15734440,SRR15734441,SRR15734442,SRR15734443,SRR15734444,SRR15734445,SRR17619844,SRR17619845,SRR17407396,SRR17408317,SRR17408318)
+
+#Set Sample variable for trimmomatic
+SAMPLE=${SAMPLELIST[SLURM_ARRAY_TASK_ID]}
+
+#Run Trimmomatic
+java -jar $Trimmomatic PE -threads 4 \
+        ${INDIR}/${SAMPLE}_1.fastq.gz \
+        ${INDIR}/${SAMPLE}_2.fastq.gz \
+        ${TRIMDIR}/${SAMPLE}_trim.1.fq.gz ${TRIMDIR}/${SAMPLE}_trim_orphans.1.fq.gz \
+        ${TRIMDIR}/${SAMPLE}_trim.2.fq.gz ${TRIMDIR}/${SAMPLE}_trim_orphans.2.fq.gz \
+        ILLUMINACLIP:"${ADAPTERS}":2:30:10 \
+        SLIDINGWINDOW:4:15 MINLEN:45
+
+
