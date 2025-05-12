@@ -1,0 +1,4 @@
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+[E::fai_build3_core] Cannot index files compressed with gzip, please use bgzip
+Failed to read from standard input: unknown file type
+tbx_index_build failed: ../../results/05_variantCalling/bcftools/bcftools.vcf.gz
