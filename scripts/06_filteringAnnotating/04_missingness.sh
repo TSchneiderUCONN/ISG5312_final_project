@@ -18,7 +18,7 @@ date
 module load vcftools/0.1.16
 
 #Set variables
-VCF=../../results/05_variantCalling/filtered/testgalapagosFiltered.vcf.recode.vcf
+VCF=../../results/05_variantCalling/filtered/galapagosFiltered.vcf.recode.vcf
 OUTDIR=../../results/05_variantCalling/filtered
 
 #Generate a file reporting the missingness on a per-individual basis
