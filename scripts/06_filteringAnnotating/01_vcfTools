@@ -18,7 +18,7 @@ date
 module load vcftools/0.1.16
 
 #Set variables
-VCF=../../results/bcftools/galapagos100kbWin.vcf.gz
+VCF=../../results/bcftools/galapagos1000kbWin.vcf.gz
 OUTDIR=../../results/filtered
 
 #Filter vcf file and output filtered file
