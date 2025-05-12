@@ -1,0 +1,27 @@
+#!/bin/bash
+#SBATCH --job-name=testvcftoolsFilter
+#SBATCH -n 1
+#SBATCH -N 1
+#SBATCH -c 10
+#SBATCH --mem=35G
+#SBATCH --qos=general
+#SBATCH --partition=general
+#SBATCH --mail-user=rnu24002@uconn.edu
+#SBATCH --mail-type=ALL
+#SBATCH -o %x_%j.out
+#SBATCH -e %x_%j.err
+
+hostname
+date
+
+#Load software
+module load vcftools/0.1.16
+
+#Set variables
+VCF=../../results/05_variantCalling/bcftools/TEST_galapagos100kbWin.vcf.gz
+OUTDIR=../../results/05_variantCalling/filtered
+mkdir -p ${OUTDIR}
+
+#Filter vcf file and output filtered file
+vcftools --gzvcf ${VCF} --minDP 6 --minGQ 18 --remove-indels --recode --out $OUTDIR/testgalapagosFiltered.vcf
+
