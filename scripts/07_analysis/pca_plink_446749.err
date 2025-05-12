@@ -1,0 +1,2 @@
+Error: Invalid chromosome code 'NW_022640411.1' on line 10646 of .vcf file.
+(Use --allow-extra-chr to force it to be accepted.)

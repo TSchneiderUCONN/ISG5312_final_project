@@ -1,0 +1,3 @@
+Error: Invalid --fst parameter
+'../../results/05_variantCalling/filtered/testgalapagosFiltered.vcf.recode.vcf'.
+For more information, try 'plink --help [flag name]' or 'plink --help | more'.

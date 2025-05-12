@@ -1,0 +1,10 @@
+xanadu-04
+Sun May 11 10:23:43 EDT 2025
+PLINK v1.90b4.4 64-bit (21 May 2017)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to ../../results/06_analysis/galapagosFst.log.
+Options in effect:
+  --fst ../../results/05_variantCalling/filtered/testgalapagosFiltered.vcf.recode.vcf
+  --out ../../results/06_analysis/galapagosFst
+  --vcf ../../results/05_variantCalling/filtered/testgalapagosFiltered.vcf.recode.vcf
+
