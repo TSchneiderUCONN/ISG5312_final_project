@@ -18,7 +18,7 @@ date
 module load plink/1.90.beta.4.4
 
 #Set input/output directories
-VCF=../../results/05_variantCalling/filtered/testgalapagosFiltered.vcf.recode.vcf
+VCF=../../results/05_variantCalling/filtered/galapagosFiltered.vcf.recode.vcf
 OUT=../../results/06_analysis
 
 #Perform linkage pruning VCF file
