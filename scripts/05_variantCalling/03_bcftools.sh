@@ -32,7 +32,7 @@ ls ${INDIR}/*.bam >${INDIR}/bam_list.txt
 GEN=../../genome/GCF_003597395.1_ASM359739v1_genomic.fna
 
 #Identify regions file
-regionsfile=../../genome/100kbWin.bed
+regionsfile=../../genome/1000kbWin.bed
 
 #Call variants in parallel
 (cat "$regionsfile" | parallel -k -j 30 \
@@ -41,8 +41,8 @@ regionsfile=../../genome/100kbWin.bed
 vcffirstheader |
 vcfstreamsort -w 1000 |
 vcfuniq |
-bgzip >${OUTDIR}/galapagos.vcf.gz
+bgzip >${OUTDIR}/galapagos1000kbWin.vcf.gz
 
 #Index vcf
-tabix -p vcf ${OUTDIR}/galapagos.vcf.gz
+tabix -p vcf ${OUTDIR}/galapagos1000kbWin.vcf.gz
 
