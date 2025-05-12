@@ -1,0 +1,24 @@
+#This is not a shell script. This script is to be used in R to visualize the principal component analysis
+
+#Load required libraries
+library(tidyverse)
+library(ggrepel)
+
+#Read in data
+pca <- read_table("galapagos.eigenvec", col_name=FALSE)
+eigenval <- scan("galapagos.eigenval")
+
+#Clean up data
+#Remove nuisance column
+pca <- pca[,-1]
+
+#Set column names
+names(pca)[1] <- "Sp"
+names(pca)[2:ncol(pca)] <- paste0("PC", 1:(ncol(pca)-1)
+
+#Create object for species samples
+Species <- rep(pca$Sp)
+
+#Plot PCA
+#Due to how tightly clustered together samples are, lables will be crowded. Feel free to edit as you please to make a more visually pleasing plot.
+ggplot(pca,aes(x=PC2,y=PC1,col=Species)) + geom_point() + xlab(paste0("PC2 (", signif(pve$pve[2], 3), "% variation explained)")) + ylab(paste0("PC1 (", signif(pve$pve[1], 3), "% variation explained)")) + geom_label_repel(aes(label=Species), max.overlaps = Inf)
